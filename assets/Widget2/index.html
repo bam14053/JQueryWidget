@@ -26,21 +26,21 @@
 			</div>
 			<script>
 				$("#cam1").click(function(){ 
-					document.getElementById("cam1").setAttribute("class","ui-disabled");
-					document.getElementById("cam2").removeAttribute("class");
-					document.getElementById("cam3").removeAttribute("class");
+					document.getElementById("cam1").setAttribute("class",document.getElementById("cam1").getAttribute("class")+"ui-disabled");
+					document.getElementById("cam2").getAttribute("class").replace("ui-disabled","");
+					document.getElementById("cam3").getAttribute("class").replace("ui-disabled","");
 					document.getElementById("cam").src= "http://www.opentopia.com/webcam/15494?viewmode=livevideo";
 				});
 				$("#cam2").click(function(){
-					document.getElementById("cam2").setAttribute("class","ui-disabled");
-					document.getElementById("cam1").removeAttribute("class");
-					document.getElementById("cam3").removeAttribute("class");
+					document.getElementById("cam2").setAttribute("class",document.getElementById("cam2").getAttribute("class")+"ui-disabled");
+					document.getElementById("cam3").getAttribute("class").replace("ui-disabled","");
+					document.getElementById("cam1").getAttribute("class").replace("ui-disabled","");
 					document.getElementById("cam").src= "http://www.opentopia.com/webcam/15500?viewmode=livevideo";
 				});
 				$("#cam3").click(function(){
-					document.getElementById("cam3").setAttribute("class","ui-disabled");
-					document.getElementById("cam1").removeAttribute("class");
-					document.getElementById("cam2").removeAttribute("class");
+					document.getElementById("cam3").setAttribute("class",document.getElementById("cam3").getAttribute("class")+"ui-disabled");
+					document.getElementById("cam2").getAttribute("class").replace("ui-disabled","");
+					document.getElementById("cam1").getAttribute("class").replace("ui-disabled","");
 					document.getElementById("cam").src= "http://www.opentopia.com/webcam/2441?viewmode=livevideo";
 				});
 			</script>
