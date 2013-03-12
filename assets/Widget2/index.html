@@ -14,10 +14,10 @@
 			<h1>Choose your choice of Webcam</h1>
 		</div>
 		<div data-role="content">
-			<div data-role="controlgroup" data-type="horizontal">
-			    <a data-role="button" data-theme="e" id="cam1">Cam 1</a>
-			    <a data-role="button" data-theme="e" id="cam2">Cam 2</a>
-			    <a data-role="button" data-theme="e" id="cam3">Cam 3</a>
+			<div data-role="controlgroup" data-type="horizontal" class="cambuttons">
+			    <a data-role="button" data-theme="e" data-num="0" id="cam0">Cam 1</a>
+			    <a data-role="button" data-theme="e" data-num="1" id="cam1">Cam 2</a>
+			    <a data-role="button" data-theme="e" data-num="2" id="cam2">Cam 3</a>
 			</div>
 			<div align="right"> </div>
 			<p>
@@ -26,23 +26,20 @@
 				</iframe>
 			</p>
 			<script>
-				$("#cam1").click(function(){
-					$("#cam1").addClass('ui-disabled');
-					$("#cam2").removeClass('ui-disabled');
-					$("#cam3").removeClass('ui-disabled');
-					document.getElementById("cam").src= "http://www.opentopia.com/webcam/15494?viewmode=livevideo#form_mode";
-				});
-				$("#cam2").click(function(){
-					$("#cam2").addClass('ui-disabled');
-					$("#cam1").removeClass('ui-disabled');
-					$("#cam3").removeClass('ui-disabled');
-					document.getElementById("cam").src= "http://www.opentopia.com/webcam/15500?viewmode=livevideo#form_mode";
-				});
-				$("#cam3").click(function(){
-					$("#cam3").addClass('ui-disabled');
-					$("#cam2").removeClass('ui-disabled');
-					$("#cam1").removeClass('ui-disabled');
-					document.getElementById("cam").src= "http://www.opentopia.com/webcam/2441?viewmode=livevideo#form_mode";
+				var urls = [ "http://www.opentopia.com/webcam/15494?viewmode=livevideo#form_mode",
+				             "http://www.opentopia.com/webcam/15500?viewmode=livevideo#form_mode",
+				             "http://www.opentopia.com/webcam/2441?viewmode=livevideo#form_mode" ];
+
+				$('.cambuttons').click(function(e) {
+					var num = $(e.target).parents("a").data('num');
+					$('#cam').attr('src', urls[num]);
+					for(var i = 0; i < 3; i++)
+					{
+						if(num == i)
+							$('#cam' + i).addClass('ui-disabled');
+						else
+							$('#cam' + i).removeClass('ui-disabled');
+					}
 				});
 			</script>
 		</div>		
